@@ -2,7 +2,7 @@
 
 
 // Global 
-let openWeatherAppId = '2c4a921d55c896205bdca23294d0393d';
+const openWeatherAppId = '2c4a921d55c896205bdca23294d0393d';
 
 
 // HTML 
@@ -55,16 +55,7 @@ function displayCurrentWeather(cityName, currentWeather) {
     $('#temperature').html(currentWeather.temp) //temp
     $('#humidity').html(currentWeather.humidity) //humidity
     $('#wind').html(currentWeather.wind_speed) //windspeed
-    $('#weatherUV').html(currentWeather.uvi) //uv index
-
-    // uv index => color indicating favorable, moderate, severe
-    if (currentWeather.uvi > 6) {
-        $('#currentWeatherUV').css('background', '#aa2020')
-    } else if (currentWeather.uvi > 4) {
-        $('#currentWeatherUV').css('background', '#aa6a20')
-    } else {
-        $('#currentWeatherUV').css('background', '#40aa20')
-    }
+   
 
     $('#cityWeatherContainer').css('display', 'block')
 }
@@ -75,7 +66,7 @@ function displayWeekForecast(forecastData) {
 
     foreCastContainer.html('');
     for (let index = 1; index <= 5; index++) {      //5 days display
-        var divEl = $(`
+        let divEl = $(`
         <div class="foreCastCard">
         <p style="font-weight: 800">${moment().clone().add(index,'days').format("M/D/YYYY")}</p>
         <img src="http://openweathermap.org/img/wn/${forecastData[index].weather[0].icon}.png" alt="forcast day icon">
@@ -89,7 +80,7 @@ function displayWeekForecast(forecastData) {
 
 function displayPreviousCities(cityName, initialStart) {
     // search history 
-    var matchFound = false;
+    let matchFound = false;
     $('#previousCities').children('').each(function(i) {
         if (cityName == $(this).text()) {
             matchFound = true;
@@ -98,7 +89,7 @@ function displayPreviousCities(cityName, initialStart) {
     });
     if (matchFound) {return;}
 
-    var buttonEl = $(`<button type="button" class="col-12 mt-3 btn btn-secondary">${cityName}</button>`)
+    let buttonEl = $(`<button type="button" class="col-12 mt-3 btn btn-secondary">${cityName}</button>`)
     buttonEl.on('click', previousButtonClick);
     buttonEl.prependTo(previousCities);
 
@@ -135,4 +126,8 @@ function savePreviousData(cityName) {
 function previousButtonClick(event) {
     callCurrentWeatherDataAPI(event.target.innerHTML)
 }
+
+
+    
+   
 

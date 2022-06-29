@@ -1,34 +1,45 @@
+body{
+    margin: 5%;
+    background-color: antiquewhite;
+    font-family: 'Josefin Slab', serif;
+}
 
-header > h1 {
+
+header>h1 {
     text-align: center;
     color: #ffffff;
     font-weight: bold;
-    background: rgb(59,110,196);
-    background: linear-gradient(90deg, rgba(59,110,196,1) 0%, rgba(34,3,84,1) 100%);
+    background-image: url(./../images/leaves.jpg);
+    height: 10% ;
+    padding-top: 3%;
+    
+
 }
 
 main {
-    padding-top: 1vh;
+    padding-top: 5vh;
 }
 
 main h1 {
-    font-weight: bold;
+    font-weight:  bold;
 }
 
 .foreCastCard {
-    background-color: #2d3e50;
+   background-color: rgb(54, 77, 55);
+    border-radius: 10%;
+    justify-content: center;
 }
 
 #citySearchbutton,
 #citySearch input {
-    font-size: 1.5em;
-    border-radius: 30%;
-    border-color: rebeccapurple;
+    font-size: 1em;
+    border-radius: 5%;
+    border-color: rgb(7, 26, 2);
 }
 
 #previousCities {
     border-top: 1px solid;
-
+   
 }
 
 #previousCities button {
@@ -39,12 +50,13 @@ main h1 {
 }
 
 #previousCities button:hover {
-    background-color: #797979;
+    background-color: #615353;
 }
 
 #currentWeatherContainer p {
     font-size: larger;
-    font-weight: 600;
+    font-weight: 600 bold;
+    
 }
 
 #currentWeatherIcon {
@@ -52,11 +64,7 @@ main h1 {
     border-radius: 3rem;
 }
 
-#currentWeatherUV {
-    color: #ffffff;
-    padding: 0 10px 0 10px;
-    border-radius: .4rem;
-}
+
 
 #foreCast {
     display: flex;
