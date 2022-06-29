@@ -1,2 +1,75 @@
 
+header > h1 {
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    background: rgb(59,110,196);
+    background: linear-gradient(90deg, rgba(59,110,196,1) 0%, rgba(34,3,84,1) 100%);
+}
 
+main {
+    padding-top: 1vh;
+}
+
+main h1 {
+    font-weight: bold;
+}
+
+.foreCastCard {
+    background-color: #2d3e50;
+}
+
+#citySearchbutton,
+#citySearch input {
+    font-size: 1.5em;
+    border-radius: 30%;
+    border-color: rebeccapurple;
+}
+
+#previousCities {
+    border-top: 1px solid;
+
+}
+
+#previousCities button {
+    background-color: #a1a1a1;
+    color: #000000;
+    border: none;
+    font-size: 1.25em;
+}
+
+#previousCities button:hover {
+    background-color: #797979;
+}
+
+#currentWeatherContainer p {
+    font-size: larger;
+    font-weight: 600;
+}
+
+#currentWeatherIcon {
+    background: grey;
+    border-radius: 3rem;
+}
+
+#currentWeatherUV {
+    color: #ffffff;
+    padding: 0 10px 0 10px;
+    border-radius: .4rem;
+}
+
+#foreCast {
+    display: flex;
+    justify-content: space-between;
+}
+
+#foreCast div {
+    color: #ffffff;
+    min-width: 19%;
+    padding-left: 0.5em;
+    font-weight: 600;
+    font-size: 1.25em;
+}
+
+
+/*change format, color and appearance"
