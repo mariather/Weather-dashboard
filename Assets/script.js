@@ -1,16 +1,12 @@
-// cambiar css
 
-
-// Global 
+// Global API
 const openWeatherAppId = '2c4a921d55c896205bdca23294d0393d';
-
 
 // HTML 
 let citySearch = $('#citySearch');
-let  searchInputEl = $('#input');
+let searchInputEl = $('#input');
 let foreCastContainer = $('#foreCast');
 let previousCities = $('#previousCities');
-
 
 
 function searchInput(cityName) {
@@ -22,15 +18,15 @@ function searchInput(cityName) {
 function callCurrentWeatherDataAPI(cityName) {
     let urlApi = `https://api.openweathermap.org/data/2.5/weather?units=imperial&q=${cityName}&appid=${openWeatherAppId}`;
     fetch(urlApi)
-    .then(response => response.json())
-    .then(data => {
-        cityName = data.name;
-        callOneCallAPI(cityName, data.coord.lon, data.coord.lat);
-        displayPreviousCities(cityName);
+        .then(response => response.json())
+        .then(data => {
+            cityName = data.name;
+            callOneCallAPI(cityName, data.coord.lon, data.coord.lat);
+            displayPreviousCities(cityName);
         })
-    .catch(error => {
-        console.log('Error:');
-    });
+        .catch(error => {
+            console.log('Error:');
+        });
 
     return;
 }
@@ -39,36 +35,36 @@ function callCurrentWeatherDataAPI(cityName) {
 function callOneCallAPI(cityName, longitude, latitude) {
     let urlApi = `https://api.openweathermap.org/data/2.5/onecall?units=imperial&lon=${longitude}&lat=${latitude}&appid=${openWeatherAppId}`
     fetch(urlApi)
-    .then(response => response.json())
-    .then(data => {
-        displayCurrentWeather(cityName, data.current);
-        displayWeekForecast(data.daily)
-    });
+        .then(response => response.json())
+        .then(data => {
+            displayCurrentWeather(cityName, data.current);
+            displayWeekForecast(data.daily)
+        });
 }
 
 
 function displayCurrentWeather(cityName, currentWeather) {
-    
-    $('#actualWeatherName').html(cityName); 
+
+    $('#actualWeatherName').html(cityName);
     $('#actualWeatherDate').html(moment().format('M/D/YYYY')) //date
     $('#actualWeatherIcon').attr('src', `http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}.png`); //icon of weather conditions
     $('#temperature').html(currentWeather.temp) //temp
     $('#humidity').html(currentWeather.humidity) //humidity
     $('#wind').html(currentWeather.wind_speed) //windspeed
-   
 
-    $('#cityWeatherContainer').css('display', 'block')
+
+    $('#cityWeatherContainer').css('display', 'block') 
 }
 
 
 function displayWeekForecast(forecastData) {
     // temperature, wind, humidity
 
-    foreCastContainer.html('');
+    
     for (let index = 1; index <= 5; index++) {      //5 days display
         let divEl = $(`
         <div class="foreCastCard">
-        <p style="font-weight: 800">${moment().clone().add(index,'days').format("M/D/YYYY")}</p>
+        <p style="font-weight: 800">${moment().clone().add(index, 'days').format("M/D/YYYY")}</p>
         <img src="http://openweathermap.org/img/wn/${forecastData[index].weather[0].icon}.png" alt="forcast day icon">
         <p>Temp: ${forecastData[index].temp.day}°F</p>
         <p>Wind: ${forecastData[index].wind_speed}MPH</p>
@@ -81,29 +77,29 @@ function displayWeekForecast(forecastData) {
 function displayPreviousCities(cityName, initialStart) {
     // search history 
     let matchFound = false;
-    $('#previousCities').children('').each(function(i) {
+    $('#previousCities').children('').each(function (i) {
         if (cityName == $(this).text()) {
             matchFound = true;
             return;
         }
     });
-    if (matchFound) {return;}
+    if (matchFound) { return; }
 
     let buttonEl = $(`<button type="button" class="col-12 mt-3 btn btn-secondary">${cityName}</button>`)
     buttonEl.on('click', previousButtonClick);
     buttonEl.prependTo(previousCities);
 
-    if (!initialStart) {savePreviousData(cityName)};
+    if (!initialStart) { savePreviousData(cityName) };
 }
 
 
 
 //declare events and load previous Cities
 
-function init() { 
+function init() {
     citySearch.submit(searchInput)
     tempArr = JSON.parse(localStorage.getItem('previousSearches'))
-    if (tempArr != null){
+    if (tempArr != null) {
         for (let index = 0; index < tempArr.length; index++) {
             displayPreviousCities(tempArr[index], true)
         }
@@ -116,10 +112,10 @@ init()
 function savePreviousData(cityName) {
     tempItem = JSON.parse(localStorage.getItem('previousCities'))
     if (tempItem != null) {
-        localStorage.setItem('previousCities', JSON=(tempItem.concat(cityName)))
+        localStorage.setItem('previousCities', JSON = (tempItem.concat(cityName)))
     } else {
         tempArr = [cityName];
-        localStorage.setItem('previousCities', JSON=stringify(tempArr))
+        localStorage.setItem('previousCities', JSON = stringify(tempArr))
     }
 }
 
@@ -128,6 +124,6 @@ function previousButtonClick(event) {
 }
 
 
-    
-   
+
+
 

@@ -1,4 +1,4 @@
-body{
+body {
     margin: 5%;
     background-color: antiquewhite;
     font-family: 'Josefin Slab', serif;
@@ -10,9 +10,9 @@ header>h1 {
     color: #ffffff;
     font-weight: bold;
     background-image: url(./../images/leaves.jpg);
-    height: 10% ;
+    height: 10%;
     padding-top: 3%;
-    
+
 
 }
 
@@ -21,11 +21,11 @@ main {
 }
 
 main h1 {
-    font-weight:  bold;
+    font-weight: bold;
 }
 
 .foreCastCard {
-   background-color: rgb(54, 77, 55);
+    background-color: rgb(54, 77, 55);
     border-radius: 10%;
     justify-content: center;
 }
@@ -39,7 +39,7 @@ main h1 {
 
 #previousCities {
     border-top: 1px solid;
-   
+
 }
 
 #previousCities button {
@@ -56,7 +56,7 @@ main h1 {
 #currentWeatherContainer p {
     font-size: larger;
     font-weight: 600 bold;
-    
+
 }
 
 #currentWeatherIcon {
@@ -78,6 +78,3 @@ main h1 {
     font-weight: 600;
     font-size: 1.25em;
 }
-
-
-/*change format, color and appearance"
